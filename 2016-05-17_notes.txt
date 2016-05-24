@@ -1,0 +1,59 @@
+This question is extremely old, but I wanted to add an answer here, based on something cool I saw [here][1], last week looking up an unrelated topic.
+
+> FizzBuzz: For integers up to and including 100, prints FizzBuzz if the integer is divisible by 3 and 5 (15); Fizz if it's divisible by 3 (and not 5); Buzz if it's divisible by 5 (and not 3); and the integer otherwise.
+
+**Behold!**
+
+
+    def FizzBuzz():
+        for i in range(1,101):
+            print {
+                3 : "Fizz",
+                5 : "Buzz",
+                15 : "FizzBuzz"}.get(15*(not i%15) or
+                                     5*(not i%5 ) or
+                                     3*(not i%3 ), '{}'.format(i))
+
+The `.get()` method works wonders here.
+
+Operates as follows
+
+For all integers from 1 to 100 (101 is NOT included),  
+print the value of the dictionary key that we call via get according to these rules.  
+
+"Get the first non-False item in the `get` call, or return the integer as a string."  
+
+When checking for a `True` value, thus a value we can lookup, Python evaluates 0 to `False`. If i mod 15 = 0, that's False, we would go to the next one.  
+
+Therefore we `NOT` each of the 'mods' (aka remainder), so that if the mod == 0, which == False, we get a True statement. We multiply `True` by the dictionary key which returns the dictionary key (i.e. `3*True == 3`)
+
+When the integer it not divisible by 3, 5 or 15, then we fall to the default clause of printing the int `'{}'.format(i)` just inserts i into that string - as a string.
+
+
+Some of the output
+
+Fizz  
+79  
+Buzz  
+Fizz  
+82  
+83  
+Fizz  
+Buzz  
+86  
+Fizz  
+88  
+89  
+FizzBuzz  
+91  
+92  
+Fizz  
+94  
+Buzz  
+Fizz  
+97  
+98  
+Fizz  
+Buzz  
+
+[1]: http://stackoverflow.com/a/103081/1327325

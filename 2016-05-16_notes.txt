@@ -1,0 +1,84 @@
+data scientist - someone who finds new discoveries
+	look for meaning, knowledge inthe data
+	1. visualize the data, look at it, create reports, look for patterns
+		similar to a Busine Intel ana, or Biz Ana
+	2. Distinguished by their use of ALGORITHMS, advanced algos that run 
+	through the data, looking for all this meaning
+		thats a fundamental tool
+	to use thos algos must have foundaiton of math, stat, and in some cases
+	comp sci and domain knowledge
+
+	- given a data set and a question
+		"eg. what customer are likely to churn?"
+		gather data, run algo till a reliabel pattern arises to answer
+		that question
+		"how can I improve the recommendations i nthe recomendaiton engine"
+
+	data scientist use combo of data and algorithms
+	fundamental knowledge of a data scientist is to try and understand thos ealgorithms
+
+who is a data scientist?
+	who is NOT a data scientist?
+		a dats scientists is not a a JAVA Programmer who knows Hadoop
+		- you can't bill yourself as a data scientist because you
+		have certain technical skills. Thats not a data sicentist
+		they must understand the discover techniques and the algorithms
+	data scientist is NOT a Business Intelligence Analyst
+		they may create reports and dashboards, but they are doing that
+		based on what they THINK is important in the data.
+		- a data scientists may HYPOTHESIZE what htey thikn is important
+		but they're going to use these algorithms to kinda of confirm
+		these hypothesis.
+
+The data scientist is like the overlap of the Programmer and Biz Intel Ana
+- the ovelrap is knowledge of algos stats math scientific method
+
+You can become a data scientist withou t getting a masters, etc by using tools
+the toosl help do the heavy lifitng. give biz person ability to do some type
+of data science work.
+
+What is the discovery life cycle of data science?
+	1. understand and prep the data
+	70-80% of your time is spent on assembling that data
+	not efficient. e.g. making a sql statement or text-mining
+	not efficent of the data scientists skills
+	- you cna give that to an integraitosn specialist or techincal
+	specialist
+
+	ETL shodl be for other people, not the data scientists
+	Dat Scientist shoudl focus on the discovery process, finding new
+	models
+
+
+-------------
+
+Data Types
+	Booleans	True	False
+
+List
+	li = []
+	li.append('ant')
+	li.pop() # removes ant
+
+x = {1,1,2,2,3,3} makes a set of just 1,2,3 like set([1,2,3])
+if y were a set, you can do
+x & y
+x | y
+x - y
+y-x which is different
+and 3 in x which give boolean True of False
+
+for a dict z, such as {'a':'b', 'c':3}
+z.keys() is ['a','c']
+z.values() is ['b',3]
+
+def wtf():
+	""" doc string of stuff """
+	return 1
+
+the strong up ther is consdiered a docstinrg, since it is the first line
+in the function. We can use it to say how the function works.
+then to read it. call the function with .func_doc
+like wtf.func_doc and it will print the string
+
+import collections # different dictionary

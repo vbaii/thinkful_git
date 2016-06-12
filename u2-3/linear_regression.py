@@ -1,37 +1,38 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
+import statsmodels.api as sm
 
 loansData = pd.read_csv('loansData.csv')
 
-# loansData['Interest.Rate'].head()
-# loansData['Loan.Length'].head()
-# loansData['FICO.Range'].head()
-
+'InterestRate = b + a1(FICOScore) + a2(LoanAmount)'
 
 # clean interest rate
-def interestFix(a_series):
-    for indx in range(0,len(a_series)):
-        curr = a_series.iloc[indx]
-        nxt = curr[:len(curr)-1]
-        a_series.iloc[indx] = nxt
-
-interestFix(loansData['Interest.Rate'])
-print loansData['Interest.Rate']
-
-# for i in b: a.append(i[:len(i)-1])
-
+loansData['Interest.Rate'] = [float(int_rate[:-1])/100
+                              for int_rate in loansData['Interest.Rate']]
 # clean fico
+loansData['FICO.Score'] = [int(score_range.split('-')[0])
+                           for score_range in loansData['FICO.Range']]
+# clean loan length
+loansData['Loan.Length'] = [int(term[:-7])
+                            for term in loansData['Loan.Length']]
 
-#plt fico
-'''
-plt.figure()
-p = loansData['FICO.Score'].hist()
-plt.show()
-'''
+intrate = loansData['Interest.Rate']
+loanamt = loansData['Amount.Requested']
+fico = loansData['FICO.Score']
 
-# create scatter plt
+# dependent variable
+y = np.matrix(intrate).transpose()
+# indedpendent variables, shaped as columns
+x1 = np.matrix(fico).transpose()
+x2 = np.matrix(loanamt).transpose()
 
-'top-left_to_bottom-right diagonal is varibale against itself'
-# a = pd.scatter_matric(loansData, alpha=0.05, figsize=(0,10))
-'makes diagonal a historgram of var instead'
-# a = pd.scatter_matric(loansData, alpha=0.05, figsize=(0,10), diagonal='hist')
+# create an input matrix
+x = np.column_stack([x1,x2])
+
+# create a linear model
+X = sm.add_constant(x)
+model = sm.OLS(y,X)
+f = model.fit()
+
+f.summary()

@@ -17,3 +17,7 @@ loansData['FICO.Score'] = [int(score_range.split('-')[0]) for score_range in loa
 loansData['Loan.Length'] = [int(term[:-7]) for term in loansData['Loan.Length']]
 
 
+loansData['IR_TF'] = loansData['Interest.Rate'] < 0.12
+loansData['constant_intercept'] = 1.0
+
+ind_vars =['FICO.Score','Amount.Funded.By.Investors','constant_intercept']
